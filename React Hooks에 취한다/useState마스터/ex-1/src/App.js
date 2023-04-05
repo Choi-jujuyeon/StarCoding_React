@@ -11,15 +11,19 @@ function App() {
        
     */
     const onClickchange = () => {
-        setTime(time + 1);
+        let newTime; //새로운 변수 생성
 
-        /* setTime()
-        => 시간을 업데이트할 함수를 의미한다.
-        => 안에 넣어줄 인자
-            : 새로운 state로 반영될 값을 넣어준다.
-            : 시간을 +1씩 증가시킬 것이다.
-         */
-        console.log(time);
+        if (time >= 12) {
+            //time=13이 될 경우 조건 만족시
+
+            newTime = 1; //
+        } else {
+            // 그외의 경우
+
+            newTime = time + 1;
+        }
+        setTime(newTime);
+        console.log(newTime);
     };
 
     // 이벤트동작시 적용될 함수를 생성해준다.
