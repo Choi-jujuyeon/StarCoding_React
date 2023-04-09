@@ -14,9 +14,38 @@ function App() {
      
     */
 
+    const [input, setInput] = useState("");
+
+    /* input 값 안에 어떤 값들이 존재하는지 tracking하는 기능
+
+        => input : input 태그에 입력된 값들을 읽어옴.
+        => setInput : 새로운 input이 있을 때 생신해주는 역할
+
+        useState("") : 초기값은 빈 문자열을 넣어준다.
+        useState : 값을 추적해준다 == input 태그에 적혀있는 값들을 추적
+
+    
+    */
+
+    const handleInputChange = (e) => {
+        setInput(e.target.value);
+
+        /*입력을 할 때마다 핸들링을 할 수 있는 함수
+            
+            => 인자로 event를 받는다.
+            => setInput를 활용해 input state를 업데이트 해준다.*/
+    };
+    console.log(input);
+
     return (
         <div>
-            <input type="text " />
+            <input type="text" value={input} onChange={handleInputChange} />
+            {/* 입력받을 창 생성 
+
+              value 속성 추가
+              input을 할때마다 handling을 할 수 있도록 설정 ==onChange
+            */}
+
             <button>Upload</button>
 
             {names.map((name, i) => {
