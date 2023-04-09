@@ -1,7 +1,23 @@
 import { useState } from "react";
 
+const heavyWork = () => {
+    console.log("엄청 무거운 작업 !!!");
+    return ["홍길동", "김민수"];
+};
+
+/* 현재 state가 업데이트 될 때마다 함수는 계속 rendering 됌
+  => 초기값이 계속해서 호출되는 시스템 ==> 나중에 과부화 올 수 있음
+  => 초기값을 설정하는 함수를 하나 다시 만들자 ! 
+  => 이때 주의할점 !!! 
+      -> 함수는 처음에 1번만 초기값을 호출하도록 설정하자 !
+*/
+
 function App() {
-    const [names, setNames] = useState(["홍길동", "김민수"]);
+    const [names, setNames] = useState(() => {
+        return heavyWork();
+    });
+
+    // const [names, setNames] = useState(["홍길동", "김민수"]);
     /* 입력 값을 받기전 기본적으로 가지고 있어야 할 이름 생성
 
       => names : 현재 상태를 의미한다.
@@ -35,7 +51,7 @@ function App() {
             => 인자로 event를 받는다.
             => setInput를 활용해 input state를 업데이트 해준다.*/
     };
-    console.log(input);
+    //console.log(input);
 
     const handleUpload = () => {
         setNames((prevState) => {
