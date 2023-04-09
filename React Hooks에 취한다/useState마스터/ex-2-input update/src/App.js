@@ -37,6 +37,24 @@ function App() {
     };
     console.log(input);
 
+    const handleUpload = () => {
+        setNames((prevState) => {
+            console.log("이전 state", prevState);
+            return [input, ...prevState];
+        });
+    };
+    /* 버튼을 눌렀을 때 upload가 되도록 설정하는 함수
+
+      => setNames[] 안에 초기 값 인자가 들어가 있는 상황
+        -> 여기에 인자를 계속 업로드 하고 싶다. ~~~> 이럴경우 콜백 함수를 사용하면 된다 ! 
+
+      => 콜백 함수
+        -> 콜백의 인자 == 업데이트 하기 전 state를 담아줌.
+        -> return 안에 넣을 값 == 새롭게 업데이트될 값 == 배열을 넣어줌
+          ->>> [새로운 값을 받는 변수, 이전 state를 담고 있는 배열]
+
+    */
+
     return (
         <div>
             <input type="text" value={input} onChange={handleInputChange} />
@@ -46,7 +64,7 @@ function App() {
               input을 할때마다 handling을 할 수 있도록 설정 ==onChange
             */}
 
-            <button>Upload</button>
+            <button onClick={handleUpload}>Upload</button>
 
             {names.map((name, i) => {
                 // 자바스크립트 문법임으로 {중괄호}로 감싸준다.
