@@ -18,7 +18,7 @@ function App() {
     });
 
     // const [names, setNames] = useState(["홍길동", "김민수"]);
-    /* 입력 값을 받기전 기본적으로 가지고 있어야 할 이름 생성
+    /* 입력 값을 받기전 기본적으로 가지고 있어야 할 이름 생성 ~>> 배열로
 
       => names : 현재 상태를 의미한다.
       => setName : time(state)을 업데이트할 함수를 의미한다.
@@ -49,7 +49,13 @@ function App() {
         /*입력을 할 때마다 핸들링을 할 수 있는 함수
             
             => 인자로 event를 받는다.
-            => setInput를 활용해 input state를 업데이트 해준다.*/
+            => setInput를 활용해 input state를 업데이트 해준다.
+
+            => input 태그에 이벤트가 발생하면 콜백함수가 실행된다.
+            => 이벤트 객체 e에서 target프로퍼티를 통해 이벤트 발생 요소에 접근이 가능하다.
+            (=> 이때 target프로퍼티 == 이벤트가 발생한 DOM요소 참조시 활용. )
+
+        */
     };
     //console.log(input);
 
@@ -78,6 +84,7 @@ function App() {
 
               value 속성 추가
               input을 할때마다 handling을 할 수 있도록 설정 ==onChange
+                -> onChange 이벤트를 사용하여 input 요소의 값을 업데이트 할 수 있다.
             */}
 
             <button onClick={handleUpload}>Upload</button>
@@ -87,7 +94,7 @@ function App() {
                 // names 배열을 돌면서 item마다 p태그를 돌도록 설정
                 return <p key={i}>{name}</p>;
                 /* map()
-                  => element를 출력할 경우 
+                  => element(=name)를 출력할 경우 
                     : key={i}의 값이 꼭 필요하다 ! (이때 i는 키값을 의미한다.)
                 */
             })}
